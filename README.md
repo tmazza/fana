@@ -36,15 +36,16 @@ CONFIGURATION
 
 ### Database
 
-Edit the file `config/db.php` with real data, for example:
+Edit the file `config/params.php` with real data, for example:
 
 ```php
 return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
+    'adminEmail' => '',
+    'cookieValidationKey' => '',
+    'db_user' => '',
+    'db_pass' => '',
+    'db_host' => '',
+    'db_base' => '',
 ];
 ```
 
