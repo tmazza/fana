@@ -18,9 +18,20 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        'css/animate.css',
+        'css/icomoon.css',
+        'css/magnific-popup.css',
+        'css/salvattore.css',
+        'css/style.css',
     ];
     public $js = [
+        'js/jquery.easing.1.3',
+        'js/jquery.magnific-popup.min.js',
+        'js/jquery.waypoints.min.js',
+        'js/main.min.js',
+        'js/respond.min.js',
+        'js/salvattore.min.js',
+        'js/unveil.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
