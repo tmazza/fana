@@ -45,7 +45,8 @@
 	
 	var magnifPopup = function() {
 		$('.image-popup').magnificPopup({
-			type: 'image',
+			// type: 'image',
+		  	type: 'ajax',
 			removalDelay: 300,
 			mainClass: 'mfp-with-zoom',
 			titleSrc: 'title',

@@ -25,11 +25,10 @@ class AppAsset extends AssetBundle
         'css/style.css',
     ];
     public $js = [
-        'js/jquery.easing.1.3',
+        'js/jquery.easing.1.3.js',
         'js/jquery.magnific-popup.min.js',
         'js/jquery.waypoints.min.js',
-        'js/main.min.js',
-        'js/respond.min.js',
+        'js/main.js',
         'js/salvattore.min.js',
         'js/unveil.js',
     ];

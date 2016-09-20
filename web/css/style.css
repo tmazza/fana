@@ -8306,3 +8306,37 @@ a > img.fh5co-align-center {
 }
 
 /*# sourceMappingURL=style.css.map */
+.mfp-close { color: white!important; }
+
+
+/* grid página de produto */
+@media screen and (max-width: 480px){
+  #grid[data-columns]::before {
+    content: '1 .column.size-1of1';
+  }
+}
+
+@media screen and (min-width: 481px) {
+  #grid[data-columns]::before {
+    content: '2 .column.size-1of2';
+  }
+}
+
+/* Again, you’re free to use and define the classes: */
+.column { float: left; }
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 50%; }
+
+.product-view {
+  width: 100%;
+  max-width: 800px;
+  margin: 10px auto;
+  display: inline-block;
+}
+
+button.mfp-close, button.mfp-arrow {
+  position: fixed;
+}
+button.mfp-close {
+  right: 20px;
+}

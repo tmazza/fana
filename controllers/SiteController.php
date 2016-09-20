@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Produto;
 
 class SiteController extends Controller
 {
@@ -60,7 +61,27 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'produtos' => Produto::find()->where([
+                'publicado' => '1',
+            ])->asArray()->all(),
+        ]);
+    }
+
+    public function actionProduto($id)
+    {
+        $produto = Produto::findOne((int) $id);
+        if(Yii::$app->request->isAjax){
+            return $this->renderPartial('produto',[
+                'produto' => $produto,
+                'color' => 'white',
+            ]);   
+        } else {
+            return $this->render('produto',[
+                'produto' => $produto,
+                'color' => 'black',
+            ]);
+        }
     }
 
     /**
@@ -94,5 +115,6 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
 
 }
