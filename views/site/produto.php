@@ -7,7 +7,7 @@ use yii\helpers\Html;
 	</h3>
 
 	<?php foreach ($produto->imagens as $i): ?>
-		<?= Html::img($i->path, [
+		<?= Html::img($i->getUrl(), [
 			'alt' => 'Imagem ' . $produto->nome,
 		]); ?>
 	<?php endforeach; ?>

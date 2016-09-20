@@ -55,4 +55,12 @@ class ProdutoImagem extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Produto::className(), ['id' => 'produto_id']);
     }
+
+    public function getUrl()
+    {
+        return Yii::$app->params['amazon']['bucketUrl']
+         . '/' . Yii::$app->params['amazon']['bucketId']
+         . '/' . $this->path;
+    }
+
 }

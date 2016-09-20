@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
+use app\models\ProdutoImagem;
 
 /**
  * This is the model class for table "produto".
@@ -13,6 +15,14 @@ use Yii;
  */
 class Produto extends \yii\db\ActiveRecord
 {
+
+    const SCENARIO_INSERT = 'insert';
+
+    /**
+     * @var UploadedFile[]
+     */
+    public $imageFiles;
+
     /**
      * @inheritdoc
      */
@@ -27,10 +37,11 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'nome', 'capa'], 'required'],
-            [['id'], 'integer'],
+            [['nome', 'capa'], 'required'],
             [['nome', 'capa'], 'string'],
-            [['id'], 'unique'],
+            [['imageFiles'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 
+                'maxFiles' => 10, 
+                'on' => self::SCENARIO_INSERT],
         ];
     }
 
@@ -51,6 +62,13 @@ class Produto extends \yii\db\ActiveRecord
         return $this->hasMany(ProdutoImagem::className(), [
             'produto_id' => 'id',
         ]);
+    }
+
+    public function getUrlCapa()
+    {
+        return Yii::$app->params['amazon']['bucketUrl']
+         . '/' . Yii::$app->params['amazon']['bucketId']
+         . '/' . $this->capa;
     }
 
 }

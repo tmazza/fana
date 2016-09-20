@@ -64,7 +64,7 @@ class SiteController extends Controller
         return $this->render('index',[
             'produtos' => Produto::find()->where([
                 'publicado' => '1',
-            ])->asArray()->all(),
+            ])->all(),
         ]);
     }
 
@@ -115,6 +115,5 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
-
 
 }

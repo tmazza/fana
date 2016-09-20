@@ -13,7 +13,7 @@ use yii\helpers\Html;
                             <a href="<?=Url::to(['/site/produto',
                                 'id' => $p['id'],
                             ]);?>" class="image-popup fh5co-board-img" title="<?=$p['nome'];?>">
-                            <img src="images/load.gif" data-src="<?=$p['capa'];?>" alt="Imagem <?=$p['nome'];?>"></a>
+                            <img src="images/load.gif" data-src="<?=$p->getUrlCapa();?>" alt="Imagem <?=$p['nome'];?>"></a>
                         </div>
                         <div class="fh5co-desc">
                             <?=Html::a($p['nome'],['/site/produto','id'=>$p['id']]);?>                            
