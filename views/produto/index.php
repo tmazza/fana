@@ -3,7 +3,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="container">
-	Nome:<h3><?=$produto->nome;?></h3>
+	Nome:<h3><?=$produto->nome;?>
+	<?= Html::a('Editar',Url::to(['/produto/insert','id'=>$produto->id])); ?>
+
+	</h3>
 	Capa:<br> 
 	<?php if($produto->capa == $capaDefault): ?>
 		Sem capa.
@@ -12,7 +15,9 @@ use yii\helpers\Url;
 			'style' => 'width: 200px;',
 		]); ?>
 	<?php endif; ?>
-	<h3>Imagens</h3> (clique para selecionar como capa)
+	<h3>Imagens
+	<?= Html::a('Incluir nova imagem',Url::to(['/produto/insert','id'=>$produto->id])); ?>
+	</h3> (clique para selecionar como capa)
 	<hr>
 	<?php foreach ($produto->imagens as $i): ?>
 		<div style="display: inline-block; vertical-align: top; width: 300px;">

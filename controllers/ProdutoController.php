@@ -49,17 +49,16 @@ class ProdutoController extends Controller
 		$this->redirect(['/produto/index','id'=>$produto->id]);
 	}
 
-	public function actionInsert()
+	public function actionInsert($id=false)
 	{
-		$model = new Produto();
-		$model->scenario = Produto::SCENARIO_INSERT;
+		$model = $id ? Produto::findOne((int)$id) : new Produto();
+		$model->scenario = $id ? \yii\base\Model::SCENARIO_DEFAULT : Produto::SCENARIO_INSERT;
 
         if (Yii::$app->request->isPost) {
         	$model->load(Yii::$app->request->post());
-        	$model->capa = $this->capaDefault;
+        	$model->capa = is_null($model->capa) ? $this->capaDefault : $model->capa;
             $model->imageFiles = UploadedFile::getInstances($model, 'imageFiles');
             if ($model->validate()) {
-
             	try {
             		if($model->save()){
             			foreach ($model->imageFiles as $i) {

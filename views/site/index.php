@@ -3,6 +3,10 @@ $this->title = 'Fana Confecções';
 use yii\helpers\Url;
 use yii\helpers\Html;
 ?>
+<?php
+if(!Yii::$app->user->isGuest)
+    echo Html::a('Cadastrar novo produto',Url::to(['/produto/insert']));
+?>
 <div id="fh5co-main">
     <div class="container">
         <div class="row">
@@ -16,7 +20,11 @@ use yii\helpers\Html;
                             <img src="images/load.gif" data-src="<?=$p->getUrlCapa();?>" alt="Imagem <?=$p['nome'];?>"></a>
                         </div>
                         <div class="fh5co-desc">
-                            <?=Html::a($p['nome'],['/site/produto','id'=>$p['id']]);?>                            
+                            <?=Html::a($p['nome'],['/site/produto','id'=>$p['id']]);?>
+                            <?php
+                            if(!Yii::$app->user->isGuest)
+                                echo Html::a('Editar',Url::to(['/produto/index','id'=>$p['id']]));
+                            ?>                     
                         </div>
                     </div>
                 <?php endforeach; ?>
