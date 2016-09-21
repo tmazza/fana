@@ -7,10 +7,29 @@ use yii\web\Controller;
 use app\models\Produto;
 use app\models\ProdutoImagem;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 class ProdutoController extends Controller
 {	
 	public $capaDefault = 'images/load.gif';
+
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                 'rules' => [
+	                ['allow' => true,
+	                 'roles' => ['@'],],
+	            ],
+            ],
+        ];
+    }
+
 
 	public function actionIndex($id)
 	{
