@@ -8340,3 +8340,4 @@ button.mfp-close, button.mfp-arrow {
 button.mfp-close {
   right: 20px;
 }
+img { max-width: 100%;  }
